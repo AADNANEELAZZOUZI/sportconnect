@@ -6,6 +6,10 @@ const pool = new Pool({
   max: 10
 });
 
+pool.on('connect', () => {
+  console.log(' Nouvelle connexion au Pool PostgreSQL');
+});
+
 module.exports = {
   query: (text, params) => pool.query(text, params),
   getClient: () => pool.connect()
